@@ -1,0 +1,289 @@
+[
+    {
+        "model": "trailer.trailercategory",
+        "pk": 1,
+        "fields": {
+            "code": "auto",
+            "project": 1,
+            "status": "yes",
+            "created_at": "2025-12-01T00:00:00Z",
+            "updated_at": "2025-12-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailercategory",
+        "pk": 2,
+        "fields": {
+            "code": "van",
+            "project": 1,
+            "status": "yes",
+            "created_at": "2025-12-01T00:00:00Z",
+            "updated_at": "2025-12-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailercategory",
+        "pk": 3,
+        "fields": {
+            "code": "moto",
+            "project": 1,
+            "status": "yes",
+            "created_at": "2025-12-01T00:00:00Z",
+            "updated_at": "2025-12-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailercategory",
+        "pk": 4,
+        "fields": {
+            "code": "platform",
+            "project": 1,
+            "status": "yes",
+            "created_at": "2025-12-01T00:00:00Z",
+            "updated_at": "2025-12-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailercategory",
+        "pk": 7,
+        "fields": {
+            "code": "industrial",
+            "project": 1,
+            "status": "yes",
+            "created_at": "2025-12-01T00:00:00Z",
+            "updated_at": "2025-12-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailercategory",
+        "pk": 8,
+        "fields": {
+            "code": "special equipment",
+            "project": 1,
+            "status": "yes",
+            "created_at": "2025-12-01T00:00:00Z",
+            "updated_at": "2025-12-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailercategory",
+        "pk": 9,
+        "fields": {
+            "code": "advertisement",
+            "project": 1,
+            "status": "yes",
+            "created_at": "2025-12-01T00:00:00Z",
+            "updated_at": "2025-12-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 1,
+        "fields": {
+            "master": 1,
+            "language_code": "en",
+            "title": "Auto Trailers",
+            "description": "Auto Trailers"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 2,
+        "fields": {
+            "master": 1,
+            "language_code": "ru",
+            "title": "Автоприцеп",
+            "description": "Прицеп доступный для большинства"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 3,
+        "fields": {
+            "master": 1,
+            "language_code": "lv",
+            "title": "Auto piekabes",
+            "description": "Autopiekabes"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 4,
+        "fields": {
+            "master": 2,
+            "language_code": "en",
+            "title": "Van",
+            "description": "Van"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 5,
+        "fields": {
+            "master": 2,
+            "language_code": "ru",
+            "title": "Фургон",
+            "description": "Для любого фермера пригодится перевозка скота"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 6,
+        "fields": {
+            "master": 2,
+            "language_code": "lv",
+            "title": "Furgons",
+            "description": "Furgons"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 7,
+        "fields": {
+            "master": 3,
+            "language_code": "en",
+            "title": "MotoTrailers",
+            "description": "MotoTrailers"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 8,
+        "fields": {
+            "master": 3,
+            "language_code": "ru",
+            "title": "Мотоприцепы",
+            "description": "Прицепы для перевозки мотоциклов"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 9,
+        "fields": {
+            "master": 3,
+            "language_code": "lv",
+            "title": "Motopiekabe",
+            "description": "Motopiekabes"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 10,
+        "fields": {
+            "master": 4,
+            "language_code": "en",
+            "title": "platforms",
+            "description": "platforms"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 11,
+        "fields": {
+            "master": 4,
+            "language_code": "ru",
+            "title": "Платформы",
+            "description": "Профессиональная перевозка автомобилей"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 12,
+        "fields": {
+            "master": 4,
+            "language_code": "lv",
+            "title": "Platformas",
+            "description": "Platformas"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 13,
+        "fields": {
+            "master": 7,
+            "language_code": "en",
+            "title": "Industrial Trailers",
+            "description": "Industrial Trailers"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 14,
+        "fields": {
+            "master": 7,
+            "language_code": "ru",
+            "title": "Строительные прицепы",
+            "description": "Строительные прицепы"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 15,
+        "fields": {
+            "master": 7,
+            "language_code": "lv",
+            "title": "Сeltniecības piekabes",
+            "description": "Сeltniecības piekabes"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 16,
+        "fields": {
+            "master": 8,
+            "language_code": "en",
+            "title": "Trailer for special equipment",
+            "description": "Trailer for special equipment"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 17,
+        "fields": {
+            "master": 8,
+            "language_code": "ru",
+            "title": "Прицеп для спец. техники",
+            "description": "Автоприцеп для спец. техники"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 18,
+        "fields": {
+            "master": 8,
+            "language_code": "lv",
+            "title": "Piekabe speciālajam aprīkojumam",
+            "description": "Piekabe speciālajam aprīkojumam"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 19,
+        "fields": {
+            "master": 9,
+            "language_code": "en",
+            "title": "Advertising trailer",
+            "description": "Advertising trailer"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 20,
+        "fields": {
+            "master": 9,
+            "language_code": "ru",
+            "title": "Рекламный",
+            "description": "Рекламный автоприцеп"
+        }
+    },
+    {
+        "model": "trailer.trailercategorytranslation",
+        "pk": 21,
+        "fields": {
+            "master": 9,
+            "language_code": "lv",
+            "title": "Reklāmas treileris",
+            "description": "Reklāmas treileris"
+        }
+    }
+]

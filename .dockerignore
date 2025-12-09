@@ -1,0 +1,33 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Git and configs
+.git/
+.gitignore
+
+# Local files
+*.log
+*.bak
+*.swp
+
+# Django files
+*.sqlite3
+media/
+staticfiles/
+static/
+
+# Environment
+.env
+.env.*
+
+# IDEs
+.vscode/
+.idea/

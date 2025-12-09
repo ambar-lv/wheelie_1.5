@@ -1,0 +1,21 @@
+services:
+  wheelie-redis:
+    container_name: wheelie-redis
+    image: redis:latest
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+
+  wheelie-postgres:
+    container_name: wheelie-postgres
+    image: postgres:16
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - wheelie_postgres_volume:/var/lib/postgresql/data/
+
+volumes:
+  wheelie_postgres_volume:

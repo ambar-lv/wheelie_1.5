@@ -1,0 +1,100 @@
+[
+    {
+        "model": "core.invoice",
+        "pk": 1,
+        "fields": {
+            "logo": "invoice_logos/sia_wheelie_logo.jpg",
+            "logo_height_pt": 95,
+            "address": "Jürkalnes iela 22, Riga, LV-1046",
+            "name": "SIA WHEELIE",
+            "phone": "+37120045909",
+            "email": "info@wheelie.lv",
+            "reg": "40203667671",
+            "pvn": "LV40203667671",
+            "bank": "Signet Bank AS",
+            "swift": "LV35 LLBB0003204004735",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "core.owner",
+        "pk": 1,
+        "fields": {
+            "name": "wheelie",
+            "phone": "+37120045909",
+            "email": "info@wheelie.lv",
+            "contact": "",
+            "percent": 2,
+            "panel_login": "wheelie",
+            "panel_password": "wheelie+2022+HAKHhB4=Xy$L",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "core.country",
+        "pk": 1,
+        "fields": {
+            "name": "Latvia"
+        }
+    },
+    {
+        "model": "core.city",
+        "pk": 1,
+        "fields": {
+            "country": 1,
+            "name": "Riga"
+        }
+    },
+    {
+        "model": "core.project",
+        "pk": 1,
+        "fields": {
+            "name": "wheelie",
+            "short_name": "wheelie",
+            "domain": "wheelie.lv",
+            "email": "info@wheelie.lv",
+            "phone": "+37120045909",
+            "owner": 1,
+            "invoice": 1,
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "core.referalpercent",
+        "pk": 1,
+        "fields": {
+            "project": 1,
+            "new": 15,
+            "sharing": 10,
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "core.projectversion",
+        "pk": 1,
+        "fields": {
+            "project": 1,
+            "apple_version": "1.6.0",
+            "android_version": "1.5.9",
+            "apple_update_link": "https://apps.apple.com/lv/app/wheelie-piekabju-noma/id6466149580",
+            "android_update_link": "https://play.google.com/store/apps/details?id=lv.wheelie.app&hl=en_US&pli=1",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "core.projectimage",
+        "pk": 1,
+        "fields": {
+            "project": 1,
+            "main": "project/1/main_logo.jpg",
+            "slider": "project/1/slider_logo.jpg",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    }
+]

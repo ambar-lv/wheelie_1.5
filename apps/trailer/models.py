@@ -74,11 +74,12 @@ class TrailerType(TranslatableModel, AbstractBaseModel):
     status = models.CharField(_("Activity status"), choices=ActivityStatusChoice.choices, default=ActivityStatusChoice.YES, max_length=3)
 
     def __str__(self) -> str:
-        return self.code
+        return self.title
     
     class Meta:
         verbose_name = _('Trailer type')
         verbose_name_plural = _('Trailer types')
+
 
 class TrailerTypeSEO(TranslatableModel, AbstractBaseModel):
     trailer_type = models.ForeignKey(TrailerType, on_delete=models.CASCADE, verbose_name=_('Trailer type'), related_name='seo')
@@ -107,11 +108,13 @@ class TrailerTypeSEO(TranslatableModel, AbstractBaseModel):
         verbose_name = _('Trailer type SEO')
         verbose_name_plural = _('Trailer type SEO')
 
+
 class TrailerTypePrice(AbstractBaseModel):
     trailer_type = models.ForeignKey(TrailerType, on_delete=models.CASCADE, verbose_name=_('Trailer type'), related_name='prices')
     hour = models.DecimalField(_("For hour"), max_digits=12, decimal_places=2)
     one_day = models.DecimalField(_("For one day"), max_digits=12, decimal_places=2)
     two_days = models.DecimalField(_("For two days"), max_digits=12, decimal_places=2)
+    three_days = models.DecimalField(_("For three days"), max_digits=12, decimal_places=2)
     week = models.DecimalField(_("For week"), max_digits=12, decimal_places=2)
     month = models.DecimalField(_("For month"), max_digits=12, decimal_places=2)
 
@@ -123,13 +126,12 @@ class TrailerTypePrice(AbstractBaseModel):
         verbose_name_plural = _('Trailer type prices')
 
 
-
 class TrailerTypeImage(AbstractBaseModel):
     def trailer_type_image(instance, filename):
-        return f'trailer-types/{instance.id}/{filename}'
+        return f'trailer-types/{instance.trailer_type.id}/{filename}'
 
     trailer_type = models.ForeignKey(TrailerType, on_delete=models.CASCADE, verbose_name=_('Trailer type'), related_name='images')
-    number = models.PositiveIntegerField(_('Number'))
+    number = models.PositiveSmallIntegerField(_('Number'))
     image = models.ImageField(
         _('Image'),
         upload_to=trailer_type_image,
@@ -147,9 +149,6 @@ class TrailerTypeImage(AbstractBaseModel):
         verbose_name = _('Trailer type image')
         verbose_name_plural = _('Trailer type images')
         unique_together = ['trailer_type', 'number']
-
-
-
 
 
 class Trailer(AbstractBaseModel):
@@ -170,4 +169,3 @@ class Trailer(AbstractBaseModel):
     documents = models.JSONField(default=list, verbose_name=_('Documents'))
 
     notes = models.TextField(_('Notes'), blank=True, null=True)
-

@@ -12,8 +12,8 @@
             "category": 7,
             "position": 4,
             "status": "yes",
-            "main_image": "trailer-types/sandy-xl-5_1724835484_93803.png",
-            "icon": "trailer-types/sandy-xl-5_1724835484_93803.png",
+            "main_image": "trailer-types/1/sandy-xl-5_1724835484_93803.png",
+            "icon": "trailer-types/1/sandy-xl-5_1724835484_93803.png",
             "created_at": "2025-12-06T12:00:00Z",
             "updated_at": "2025-12-06T12:00:00Z"
         }
@@ -52,6 +52,121 @@
             "title": "SandyXL",
             "text": "Сeltniecības piekabe ar hidraulisko kravas kastes pašizgāzēja sistēmu",
             "subtext": "Сeltniecības piekabe ar hidraulisko kravas kastes pašizgāzēja sistēmu. Paaugstinātiem sānu bortiem 40 cm. Konstrukcijas izturību un stingrību nodrošina metināts atbalsta rāmis, kas izgatavots no augstas stiprības tērauda. Visas piekabes metāla daļas ir karsti cinkotas, kas padara piekabi izturīgu pret koroziju."
+        }
+    },
+    {
+        "model": "trailer.trailertypeprice",
+        "pk": 1,
+        "fields": {
+            "trailer_type": 1,
+            "hour": 7.00,
+            "one_day": 45.25,
+            "two_days": 80.00,
+            "three_days": 110.00,
+            "week": 200.00,
+            "month": 500.00,
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailertypeimage",
+        "pk": 1,
+        "fields": {
+            "trailer_type": 1,
+            "number": 1,
+            "image": "trailer-types/1/sandy-xl-5_1724835484_93803.png",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailertypeimage",
+        "pk": 2,
+        "fields": {
+            "trailer_type": 1,
+            "number": 2,
+            "image": "trailer-types/1/sandy-xl-4_1724835404_19531.png",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailertypeimage",
+        "pk": 3,
+        "fields": {
+            "trailer_type": 1,
+            "number": 3,
+            "image": "trailer-types/1/sandy-xl-3_1724835422_85761.png",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailertypeimage",
+        "pk": 4,
+        "fields": {
+            "trailer_type": 1,
+            "number": 4,
+            "image": "trailer-types/1/sandy-xl-2_1724835441_19599.png",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailertypeimage",
+        "pk": 5,
+        "fields": {
+            "trailer_type": 1,
+            "number": 5,
+            "image": "trailer-types/1/sandy-xl-1_1724835459_73050.png",
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailertypeseo",
+        "pk": 1,
+        "fields": {
+            "trailer_type": 1,
+            "created_at": "2025-12-06T12:00:00Z",
+            "updated_at": "2025-12-06T12:00:00Z"
+        }
+    },
+    {
+        "model": "trailer.trailertypeseotranslation",
+        "pk": 1,
+        "fields": {
+            "master": 1,
+            "language_code": "en",
+            "title": "Construction dump trailer",
+            "description": "Car trailer with a hydraulic system for tipping the cargo body. The strength and rigidity of the structure is ensured by a welded supporting frame made of high-strength steel. All metal parts of the trailer are hot-dip galvanized, which makes the trailer resistant to corrosion.",
+            "keywords": "Construction, dump, trailer, rent, wheelie, rent trailers, latvia",
+            "url": "construction-dump-trailer-sandy-xl"
+        }
+    },
+    {
+        "model": "trailer.trailertypeseotranslation",
+        "pk": 2,
+        "fields": {
+            "master": 1,
+            "language_code": "ru",
+            "title": "Строительный прицеп с гидравликой",
+            "description": "Автоприцеп с гидравлической системой опрокидывания грузового кузова. Прочность и жесткость конструкции обеспечивает сварная несущая рама из высокопрочной стали. Все металлические части прицепа оцинкованы горячим способом, что делает прицеп устойчивым к коррозии.",
+            "keywords": "Строительный прицеп, с гидравликой, piekabe, аренда",
+            "url": "pricep-samosval-sandy-xl"
+        }
+    },
+    {
+        "model": "trailer.trailertypeseotranslation",
+        "pk": 3,
+        "fields": {
+            "master": 1,
+            "language_code": "lv",
+            "title": "Būvniecības pašizgāzēja piekabe",
+            "description": "Сeltniecības piekabe ar hidraulisko kravas kastes pašizgāzēja sistēmu. Paaugstinātiem sānu bortiem 40 cm. Konstrukcijas izturību un stingrību nodrošina metināts atbalsta rāmis, kas izgatavots no augstas stiprības tērauda. Visas piekabes metāla daļas ir karsti cinkotas, kas padara piekabi izturīgu pret koroziju.",
+            "keywords": "Сeltniecības, piekabe, hidraulisko kravas, kastes pašizgāzēja sistēmu, wheelie",
+            "url": "buviencibas-pasizgazeja-piekabe-sandy-xl"
         }
     }
 ]

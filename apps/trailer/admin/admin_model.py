@@ -17,40 +17,40 @@ class TrailerTypeImageInline(admin.TabularInline):
     max_num = 10
 
 
-class TrailerTypeSEOInline(admin.TabularInline):
-    model = TrailerTypeSEO
-    extra = 0
-    max_num = 1
-
-
 @admin.register(TrailerCategory)
 class TrailerCategoryAdmin(TranslatableAdmin):
-    list_display = ('title', 'project', 'status')
+    search_fields = ['title']
+    list_filter = ['status']
+    list_display = ['title', 'project', 'status']
 
 
 @admin.register(TrailerType)
 class TrailerTypeAdmin(TranslatableAdmin):
+    search_fields = ['title']
     inlines = [
         TrailerTypePriceInline,
         TrailerTypeImageInline,
-        TrailerTypeSEOInline
     ]
-    list_display = ('topic', 'position', 'code', 'status')
+    list_filter = ['status']
+    list_display = ('title', 'topic', 'position', 'code', 'status')
 
 
 @admin.register(TrailerTypeImage)
 class TrailerTypeImageAdmin(admin.ModelAdmin):
+    search_fields = ['trailer_type__translations__title']
     list_display = ('trailer_type', 'number')
 
 
 @admin.register(TrailerTypePrice)
 class TrailerTypePriceAdmin(admin.ModelAdmin):
-    list_display = ('trailer_type', 'hour', 'one_day')
+    search_fields = ['trailer_type__translations__title']
+    list_display = ['trailer_type', 'hour', 'one_day', 'two_days']
 
 
 @admin.register(TrailerTypeSEO)
 class TrailerTypeSEOAdmin(TranslatableAdmin):
-    list_display = ('trailer_type', 'url')
+    search_fields = ['trailer_type__translations__title']
+    list_display = ['id', 'trailer_type', 'url']
 
 
 @admin.register(Trailer)

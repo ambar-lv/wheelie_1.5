@@ -8,6 +8,7 @@ run:
 
 destroy:
 	docker compose -f docker-compose.dev.yml down --rmi all -v
+	./clean_project.sh
 
 loaddata:
 	python manage.py loaddata initial_data.json

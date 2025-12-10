@@ -131,7 +131,7 @@ LANGUAGES = [
     ('lv', 'Latvian'),
 ]
 
-PARLER_DEFAULT_LANGUAGE_CODE = 'ru'
+PARLER_DEFAULT_LANGUAGE_CODE = 'en'
 
 PARLER_LANGUAGES = {
     None: (
@@ -140,7 +140,7 @@ PARLER_LANGUAGES = {
         {'code': 'lv', 'name': 'Latvian'},
     ),
     'default': {
-        'fallback': 'ru',
+        'fallback': 'en',
         'hide_untranslated': False,
     }
 }

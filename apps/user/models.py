@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from apps.user.enums import LanguageChoice, LegalChoice
-from apps.core.abstraction import AbstractBaseModel
+from apps.core.abstraction import AbstractBaseModel, AbstractGeoModel
 from apps.core.models import Country, City
 from apps.trip.models import Trip
 from apps.trailer.models import Trailer
@@ -28,7 +28,7 @@ class UserManager(BaseUserManager):
         return self.create_user(phone, password, **extra_fields)
 
 
-class User(AbstractUser, AbstractBaseModel):
+class User(AbstractUser, AbstractBaseModel, AbstractGeoModel):
     # TODO: Не добавлена связь с бонусами
     username = None
     device = models.CharField(_('Device'), null=True, blank=True, max_length=10)
@@ -42,8 +42,6 @@ class User(AbstractUser, AbstractBaseModel):
     last_name = models.CharField(_('Last name'), null=True, blank=True, max_length=255)
     token = models.CharField(_('Token'), max_length=255, null=True, blank=True)
     code = models.PositiveSmallIntegerField(_('Code'), null=True, blank=True)
-    latitude = models.CharField(_('Latitude'), max_length=20, null=True, blank=True)
-    longitude = models.CharField(_('Longitude'), max_length=20, null=True, blank=True)
 
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('Country'), related_name='users')
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('City'), related_name='users')

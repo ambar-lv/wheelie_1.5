@@ -9,3 +9,11 @@ class AbstractBaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class AbstractGeoModel(models.Model):
+    latitude = models.CharField(_('Latitude'), max_length=20, null=True, blank=True)
+    longitude = models.CharField(_('Longitude'), max_length=20, null=True, blank=True)
+
+    class Meta:
+        abstract = True

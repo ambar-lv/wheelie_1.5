@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from apps.core.abstraction import AbstractBaseModel
-from apps.core.models import Project
-from apps.trailer.enums import TrailerTypeChoice, TrailerStatusChoice, TrailerSubtypeChoice
+from apps.core.abstraction import AbstractBaseModel, AbstractGeoModel
+from apps.core.models import Project, Owner
 from apps.core.enums import ActivityStatusChoice
 from parler.models import TranslatableModel, TranslatedFields
 from django.core.validators import FileExtensionValidator, validate_image_file_extension
@@ -151,21 +150,74 @@ class TrailerTypeImage(AbstractBaseModel):
         unique_together = ['trailer_type', 'number']
 
 
-class Trailer(AbstractBaseModel):
-    type = models.CharField(_('Type'), max_length=50, choices=TrailerTypeChoice.choices)
-    subtype = models.CharField(_('Subtype'), max_length=50, choices=TrailerSubtypeChoice.choices, blank=True, null=True)
-    brand_model = models.CharField(_('Brand and Model'), max_length=255)
-    vin = models.CharField(_('VIN Number'), max_length=100, unique=True)
+class Parking(AbstractBaseModel, AbstractGeoModel):
+    def parking_image(instance, filename):
+        return f'parkings/{instance.trailer_type.id}/{filename}'
 
-    license_plate = models.CharField(max_length=50, blank=True, verbose_name=_('License Plate'))
-    photos = models.JSONField(default=list, verbose_name=_('Photos'))
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name=_('Project'))
+    # partner?
+    # guard ...
+    name = models.CharField(_("Name"), max_length=255)
+    address = models.CharField(_("Address"), max_length=255)
+    working_hours = models.CharField(_("Working hours"), max_length=255)
+    # Traccar Parking id relation?
+    image = models.ImageField(_('Image'), upload_to=parking_image)
 
-    status = models.CharField(_('Status'), max_length=50, choices=TrailerStatusChoice.choices, default=TrailerStatusChoice.AVAILABLE)
-    current_location = models.TextField(_('Current Location'))
-    movement_history = models.JSONField(default=list, verbose_name=_('Movement History'))
-    rental_service_history = models.JSONField(default=list, verbose_name=_('Rental/Service History'))
-    mileage_motohours = models.PositiveIntegerField(null=True, blank=True, verbose_name=_('Mileage/Motohours'))
 
-    documents = models.JSONField(default=list, verbose_name=_('Documents'))
+    def __str__(self) -> str:
+        return self.id
+    
+    class Meta:
+        verbose_name = _('Parking')
+        verbose_name_plural = _('Parkings')
 
-    notes = models.TextField(_('Notes'), blank=True, null=True)
+
+class Trailer(AbstractBaseModel, AbstractGeoModel):
+    def trailer_passport(instance, filename):
+        return f'trailers/{instance.id}/passports/{filename}'
+
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name=_('Project'), related_name='trailers')
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, verbose_name=_('Owner'), related_name='owned_trailers')
+    type = models.ForeignKey(Owner, on_delete=models.CASCADE, verbose_name=_('Type'), related_name='typed_trailers')
+    # parking relation
+    # ordered user relation
+    number = models.CharField(_('State number'), max_length=50, unique=True)
+    personal_price = models.DecimalField(_("Personal price"), max_digits=12, decimal_places=2, null=True, blank=True)
+    personal_discount = models.DecimalField(_("Personal discount"), max_digits=12, decimal_places=2, null=True, blank=True)
+    passport = models.ImageField(_("Technical passport"), null=True, blank=True, upload_to=trailer_passport, help_text=_('Format: .JPG, minimal width: 1280px'))
+    status = models.CharField(_("Activity status"), choices=ActivityStatusChoice.choices, default=ActivityStatusChoice.YES, max_length=3)
+
+    def __str__(self) -> str:
+        return self.number
+
+    class Meta:
+        verbose_name = _('Trailer')
+        verbose_name_plural = _('Trailers')
+
+
+class TrailerSEO(TranslatableModel, AbstractBaseModel):
+    trailer = models.ForeignKey(Trailer, on_delete=models.CASCADE, verbose_name=_('Trailer'), related_name='seo')
+    translations = TranslatedFields(
+        title=models.CharField('Title', max_length=255, null=True, blank=True),
+        description=models.TextField('Description', null=True, blank=True),
+        keywords=models.TextField('Keywords', null=True, blank=True),
+        url = models.SlugField(_("URL"), null=True, blank=True),
+        img = models.ImageField(
+            _("Image"),
+            help_text=_('Format: PNG, size: 512*512 px'),
+            null=True,
+            blank=True,
+            validators=[
+                FileExtensionValidator(allowed_extensions=['png']),
+                validate_image_file_extension,
+            ]
+        ),
+        link = models.CharField(_("Link"), max_length=255)
+    )
+
+    def __str__(self) -> str:
+        return self.trailer.number
+
+    class Meta:
+        verbose_name = _('Trailer SEO')
+        verbose_name_plural = _('Trailers SEO')

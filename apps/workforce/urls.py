@@ -1,4 +1,4 @@
 from django.urls import path
-from apps.company import views
+from apps.workforce import views
 
 urlpatterns = []

@@ -13,9 +13,18 @@ def create_superuser(sender, **kwargs):
         phone_code = env("SUPERUSER_PHONE_CODE")
         phone = env("SUPERUSER_PHONE")
         password = env("SUPERUSER_PASSWORD")
+        email = env("SUPERUSER_EMAIL")
+        first_name = env('SUPERUSER_FIRST_NAME')
+        telegram = env('SUPERUSER_TELEGRAM')
 
-        if phone and phone_code and password:
+        if phone and password and phone_code and email and first_name and telegram:
             if not User.objects.filter(phone=phone).exists():
                 logger.info("Creating superuser...")
-                User.objects.create_superuser(phone=phone, password=password, phone_code=phone_code)
+                User.objects.create_superuser(
+                    phone=phone, password=password,
+                    phone_code=phone_code,
+                    email=email,
+                    first_name=first_name,
+                    telegram=telegram
+                )
                 logger.info("Superuser created successfully!")

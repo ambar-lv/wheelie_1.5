@@ -3,11 +3,9 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from apps.user.enums import LanguageChoice, LegalChoice
 from apps.core.abstraction import AbstractBaseModel, AbstractGeoModel
-from apps.core.models import Country, City
 from apps.trip.models import Trip
 from apps.trailer.models import Trailer
-from apps.company.models import Company
-from apps.employer.models import Employer
+from apps.core.enums import ActivityStatusChoice
 
 
 class UserManager(BaseUserManager):
@@ -26,6 +24,9 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault("is_superuser", True)
         extra_fields.setdefault("is_active", True)
         return self.create_user(phone, password, **extra_fields)
+    
+    def get_by_natural_key(self, phone):
+        return self.get(phone=phone)
 
 
 class User(AbstractUser, AbstractBaseModel, AbstractGeoModel):
@@ -34,27 +35,29 @@ class User(AbstractUser, AbstractBaseModel, AbstractGeoModel):
     device = models.CharField(_('Device'), null=True, blank=True, max_length=10)
     balance = models.DecimalField(_('Balance'), max_digits=12, decimal_places=2, default=0.00)
     lang = models.CharField(_('Language'), max_length=50, choices=LanguageChoice.choices, default=LanguageChoice.RU)
-    phone_code = models.PositiveSmallIntegerField(_("Phone code"))
-    phone = models.PositiveIntegerField(_('Phone'), unique=True)
+    phone_code = models.CharField(_("Phone code"), max_length=5)
+    phone = models.CharField(_('Phone'), unique=True, max_length=15)
     email = models.EmailField(_('Email'), null=True, blank=True)
+    telegram = models.CharField(_("Telegram"), max_length=50, null=True, blank=True)
     email_code = models.PositiveSmallIntegerField(_('Email code'), null=True, blank=True)
     first_name = models.CharField(_('First name'), null=True, blank=True, max_length=255)
     last_name = models.CharField(_('Last name'), null=True, blank=True, max_length=255)
     token = models.CharField(_('Token'), max_length=255, null=True, blank=True)
     code = models.PositiveSmallIntegerField(_('Code'), null=True, blank=True)
 
-    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('Country'), related_name='users')
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('City'), related_name='users')
+    country = models.ForeignKey('core.Country', on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('Country'), related_name='users')
+    city = models.ForeignKey('core.City', on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('City'), related_name='users')
     address = models.TextField(_('Address'), null=True, blank=True)
     zip_code = models.CharField(_('Zip code'), max_length=10, null=True, blank=True)
 
     reg_ip = models.GenericIPAddressField(_("Registration IP"), null=True, blank=True)
     last_ip = models.GenericIPAddressField(_("Last IP"), null=True, blank=True)
     
-    legal = models.CharField(_("Legal"), choices=LegalChoice.choices, null=True, blank=True, max_length=3)
+    legal = models.CharField(_("Legal"), choices=ActivityStatusChoice.choices, default=ActivityStatusChoice.YES, max_length=3)
     comments = models.TextField(_("Сomments"), null=True, blank=True)
 
-    employer = models.ForeignKey(Employer, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('Employer'))
+    employer = models.ForeignKey('workforce.Employer', on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('Employer'))
+    status = models.CharField(_("Activity status"), choices=ActivityStatusChoice.choices, default=ActivityStatusChoice.YES, max_length=3)
 
     objects = UserManager()
 
@@ -62,7 +65,10 @@ class User(AbstractUser, AbstractBaseModel, AbstractGeoModel):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return f"+{self.phone_code}{self.phone}"
+        return f"{self.phone_code}{self.phone}"
+
+    def natural_key(self):
+        return (self.phone,)
 
     class Meta:
         verbose_name = _("User")

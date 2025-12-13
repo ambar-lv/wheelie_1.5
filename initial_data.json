@@ -1,38 +1,5 @@
 [
     {
-        "model": "core.invoice",
-        "pk": 1,
-        "fields": {
-            "logo": "invoice_logos/sia_wheelie_logo.jpg",
-            "logo_height_pt": 95,
-            "address": "Jürkalnes iela 22, Riga, LV-1046",
-            "name": "SIA WHEELIE",
-            "phone": "+37120045909",
-            "email": "info@wheelie.lv",
-            "reg": "40203667671",
-            "pvn": "LV40203667671",
-            "bank": "Signet Bank AS",
-            "swift": "LV35 LLBB0003204004735",
-            "created_at": "2025-12-06T12:00:00Z",
-            "updated_at": "2025-12-06T12:00:00Z"
-        }
-    },
-    {
-        "model": "core.owner",
-        "pk": 1,
-        "fields": {
-            "name": "wheelie",
-            "phone": "+37120045909",
-            "email": "info@wheelie.lv",
-            "contact": "",
-            "percent": 2,
-            "panel_login": "wheelie",
-            "panel_password": "wheelie+2022+HAKHhB4=Xy$L",
-            "created_at": "2025-12-06T12:00:00Z",
-            "updated_at": "2025-12-06T12:00:00Z"
-        }
-    },
-    {
         "model": "core.country",
         "pk": 1,
         "fields": {
@@ -48,18 +15,31 @@
         }
     },
     {
+        "model": "core.invoice",
+        "pk": 1,
+        "fields": {
+            "logo": "invoice_logos/sia_wheelie_logo.jpg",
+            "logo_height_pt": 95,
+            "address": "Jürkalnes iela 22, Riga, LV-1046",
+            "name": "SIA WHEELIE",
+            "reg": "40203667671",
+            "pvn": "LV40203667671",
+            "bank": "Signet Bank AS",
+            "swift": "LV35 LLBB0003204004735",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
         "model": "core.project",
         "pk": 1,
         "fields": {
             "name": "wheelie",
-            "short_name": "wheelie",
             "domain": "wheelie.lv",
-            "email": "info@wheelie.lv",
-            "phone": "+37120045909",
             "owner": 1,
             "invoice": 1,
-            "created_at": "2025-12-06T12:00:00Z",
-            "updated_at": "2025-12-06T12:00:00Z"
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
         }
     },
     {

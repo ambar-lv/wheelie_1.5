@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from apps.core.abstraction import AbstractBaseModel
 from apps.core.enums import ActivityStatusChoice
-
+from apps.workforce.models import Owner
 
 
 class Country(models.Model):
@@ -30,33 +30,12 @@ class City(models.Model):
         ordering = ['name']
 
 
-class Owner(AbstractBaseModel):
-    name = models.CharField(_('Name'), max_length=255)
-    telegram = models.CharField(_('Telegram'), max_length=255, null=True, blank=True)
-    phone = models.CharField(_('Phone'), max_length=50)
-    email = models.EmailField(_('Email'), null=True, blank=True)
-    contact = models.CharField(_('Contact'), max_length=255)
-    percent = models.SmallIntegerField(_("Percent"), default=0)
-    panel_login = models.CharField(_('Panel login'), max_length=255, null=True, blank=True)
-    panel_password = models.CharField(_('Panel password'), max_length=255, null=True, blank=True)
-    status = models.CharField(_("Activity status"), choices=ActivityStatusChoice.choices, default=ActivityStatusChoice.YES, max_length=3)
-
-    def __str__(self) -> str:
-        return self.name
-
-    class Meta:
-        verbose_name = _("Owner")
-        verbose_name_plural = _("Owners")
-
-
 class Invoice(AbstractBaseModel):
     logo = models.ImageField(_('Logo'), upload_to='invoice_logos/', null=True, blank=True)
     logo_height_pt = models.PositiveSmallIntegerField(_('Logo height in pt'), default=95)
     address = models.CharField(_('Address'), max_length=255)
     name = models.CharField(_('Name'), max_length=255)
-    phone = models.CharField(_('Phone'), max_length=50)
     fax = models.CharField(_('Fax'), max_length=100, blank=True, null=True)
-    email = models.EmailField(_('Email'))
     reg = models.CharField(_('Registration number'), max_length=50)
     pvn = models.CharField(_('PVN'), max_length=50)
     bank = models.CharField(_('Bank'), max_length=255)
@@ -75,13 +54,9 @@ class Invoice(AbstractBaseModel):
 class Project(AbstractBaseModel):
     #tpl desing(what is tpl? template? where can i find it?)
     name = models.CharField(_('Name'), max_length=255, unique=True)
-    short_name = models.CharField(_('Short name'), max_length=255)
-    domain = models.CharField(_('Domain'), max_length=255)
-    email = models.EmailField(_('Email'))
-    phone = models.CharField(_("Phone number"), max_length=50)
-    initial_country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Initial country"))
-    owner = models.ForeignKey(Owner, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Owner"))
-    invoice = models.OneToOneField(Invoice, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Invoice"))
+    domain = models.CharField(_('Domain'), max_length=255, null=True, blank=True)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, verbose_name=_("Owner"))
+    invoice = models.ForeignKey(Invoice, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Invoice"))
     recaptcha = models.BooleanField(_("reCAPTCHA"), default=False)
     status = models.CharField(_("Activity status"), choices=ActivityStatusChoice.choices, default=ActivityStatusChoice.YES, max_length=3)
 

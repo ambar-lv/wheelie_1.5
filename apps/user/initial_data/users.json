@@ -1,0 +1,73 @@
+[
+    {
+        "model": "user.user",
+        "fields": {
+            "phone_code": "+371",
+            "phone": "20390240",
+            "first_name": "Juris",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "user.user",
+        "fields": {
+            "phone_code": "+371",
+            "phone": "26160000",
+            "first_name": "Gatis",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "user.user",
+        "fields": {
+            "phone_code": "+371",
+            "phone": "29412026",
+            "first_name": "Zoliks",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "user.user",
+        "fields": {
+            "phone_code": "+371",
+            "phone": "26404992",
+            "first_name": "Oskars",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "user.user",
+        "fields": {
+            "phone_code": "+371",
+            "phone": "29192253",
+            "first_name": "Karlis",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "user.user",
+        "fields": {
+            "phone_code": "+371",
+            "phone": "26754009",
+            "telegram": "550688080",
+            "first_name": "Igor",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "user.user",
+        "fields": {
+            "phone_code": "+371",
+            "phone": "29487627",
+            "first_name": "Andris",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    }
+]

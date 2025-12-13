@@ -1,0 +1,101 @@
+[
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "20045909"
+            ],
+            "percent": 100,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "20390240"
+            ],
+            "percent": 20,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "26160000"
+            ],
+            "percent": 20,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "29412026"
+            ],
+            "percent": 20,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "26404992"
+            ],
+            "percent": 20,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "29192253"
+            ],
+            "percent": 25,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "26754009"
+            ],
+            "percent": 20,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "29487627"
+            ],
+            "percent": 20,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.owner",
+        "fields": {
+            "user": [
+                "20045909"
+            ],
+            "percent": 100,
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    }
+]

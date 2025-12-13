@@ -1,0 +1,99 @@
+[
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "20045909"
+            ],
+            "name": "SJV",
+            "full_name": "SIA SJV",
+            "reg_number": "40103057101",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "20390240"
+            ],
+            "name": "Autohof",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "26160000"
+            ],
+            "name": "The Cars",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "29412026"
+            ],
+            "name": "TNP Autoserviss",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "26404992"
+            ],
+            "name": "OSS - Ventspils",
+            "full_name": "SIA OSS Serviss",
+            "reg_number": "41203027456",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "29192253"
+            ],
+            "name": "Gigant",
+            "full_name": "SIA \"J. & K. Furniture\"",
+            "reg_number": "40203218386",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "26754009"
+            ],
+            "name": "Wash point",
+            "full_name": "SIA CLEOR",
+            "reg_number": "40203050449",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    },
+    {
+        "model": "workforce.company",
+        "fields": {
+            "owner": [
+                "29487627"
+            ],
+            "name": "D52",
+            "full_name": "D52 SIA",
+            "created_at": "2025-12-31T12:00:00Z",
+            "updated_at": "2025-12-31T12:00:00Z"
+        }
+    }
+]

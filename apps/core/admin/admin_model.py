@@ -1,6 +1,6 @@
 from django.contrib import admin
 from apps.core.models import (
-    Country, City, Owner,
+    Country, City,
     Invoice, Project, ProjectVersion,
     ProjectImage, ReferalPercent
 )
@@ -15,12 +15,6 @@ class CountryAdmin(admin.ModelAdmin):
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
     list_display = ["id", "country", "name"]
-    search_fields = ["name"]
-
-
-@admin.register(Owner)
-class OwnerAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", 'phone', 'status']
     search_fields = ["name"]
 
 

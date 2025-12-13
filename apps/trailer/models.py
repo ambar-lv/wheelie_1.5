@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from apps.core.abstraction import AbstractBaseModel, AbstractGeoModel
-from apps.core.models import Project, Owner
 from apps.core.enums import ActivityStatusChoice
 from parler.models import TranslatableModel, TranslatedFields
 from django.core.validators import FileExtensionValidator, validate_image_file_extension
@@ -19,7 +18,7 @@ class TrailerCategory(TranslatableModel, AbstractBaseModel):
             validate_image_file_extension,
         ]
     )
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name=_('Project'))
+    project = models.ForeignKey('core.Project', on_delete=models.CASCADE, verbose_name=_('Project'))
     translations = TranslatedFields(
         title=models.CharField('Title', max_length=255),
         description=models.TextField('Description')
@@ -153,8 +152,8 @@ class TrailerTypeImage(AbstractBaseModel):
 class Parking(AbstractBaseModel, AbstractGeoModel):
     def parking_image(instance, filename):
         return f'parkings/{instance.trailer_type.id}/{filename}'
-
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name=_('Project'))
+    #FINISHED HERE(TODO: parking owners=partner)
+    project = models.ForeignKey('core.Project', on_delete=models.CASCADE, verbose_name=_('Project'))
     # partner?
     # guard ...
     name = models.CharField(_("Name"), max_length=255)
@@ -162,6 +161,7 @@ class Parking(AbstractBaseModel, AbstractGeoModel):
     working_hours = models.CharField(_("Working hours"), max_length=255)
     # Traccar Parking id relation?
     image = models.ImageField(_('Image'), upload_to=parking_image)
+    parking_path = models.JSONField(_("Parking paths"), null=True, blank=True)
 
 
     def __str__(self) -> str:
@@ -176,9 +176,9 @@ class Trailer(AbstractBaseModel, AbstractGeoModel):
     def trailer_passport(instance, filename):
         return f'trailers/{instance.id}/passports/{filename}'
 
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name=_('Project'), related_name='trailers')
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, verbose_name=_('Owner'), related_name='owned_trailers')
-    type = models.ForeignKey(Owner, on_delete=models.CASCADE, verbose_name=_('Type'), related_name='typed_trailers')
+    project = models.ForeignKey('core.Project', on_delete=models.CASCADE, verbose_name=_('Project'), related_name='trailers')
+    owner = models.ForeignKey('workforce.Owner', on_delete=models.CASCADE, verbose_name=_('Owner'), related_name='owned_trailers')
+    type = models.ForeignKey(TrailerType, on_delete=models.CASCADE, verbose_name=_('Type'), related_name='typed_trailers')
     # parking relation
     # ordered user relation
     number = models.CharField(_('State number'), max_length=50, unique=True)
